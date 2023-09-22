@@ -2,9 +2,12 @@ import Race from './Race';
 
 class Dwarf extends Race {
   private static _dwarfCount = 0;
+  private _maxLifePoints: number;
 
-  constructor(name: string, dexterity: number, private _maxLifePoints = 80) {
+  constructor(name: string, dexterity: number) {
     super(name, dexterity);
+    this._maxLifePoints = 80;
+    Dwarf._dwarfCount += 1;
   }
 
   override get maxLifePoints(): number {
@@ -12,7 +15,6 @@ class Dwarf extends Race {
   }
 
   static override createdRacesInstances(): number {
-    Dwarf._dwarfCount += 1;
     return Dwarf._dwarfCount;
   }
 }
